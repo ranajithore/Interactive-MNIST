@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Summary</title>
+    <!-- <link rel="stylesheet" href="static/index.css"> -->
+    <link rel="stylesheet" href="static/loading-bar.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Warnes&display=swap');
+        .bkgrd {
+            position:fixed;
+            top:0;
+            left: 0;
+            width:100%;
+            height:100%;
+            background-image: url('static/space-background.jpg');
+            background-size: cover;
+        }
+
+
+        .summary {
+            width: 50%;
+            background-color: azure;
+            margin: auto;
+            margin-top: 1%;
+        }
+
+        h1 {
+            font-size: 80px;
+            text-align: center;
+            font-family: 'Warnes', cursive;
+            color: #fff;
+            animation: glow 1s ease-in-out infinite alternate;
+            position: relative;
+            margin: auto;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+            }
+            to {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
+            }
+        }
+
+        div.output_subarea {
+            overflow-x: auto;
+            padding: 0.4em;
+            /* Old browsers */
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            box-flex: 1;
+            /* Modern browsers */
+            flex: 1;
+            max-width: calc(100% - 14ex);
+        }
+
+        div.output_scroll div.output_subarea {
+            overflow-x: visible;
+        }
+
+        div.output_text {
+            text-align: left;
+            color: #000;
+            /* This has to match that of the the CodeMirror class line-height below */
+            line-height: 1.21429em;
+        }
+
+        #home-btn {
+            width: 12%;
+            height: 35px;
+            color: aliceblue;
+            background-color: rgb(12, 115, 248);
+            border: 0;
+            border-radius: 10px;
+            font-size: large;
+            font-weight: bold;
+            margin-left: 43%;
+            margin-top: 1%;
+        }
+
+        #home-btn:hover {
+            color: aliceblue;
+            background-color: rgb(78, 209, 181);
+        }
+
+        #loss {
+            margin-left: 15%;
+            margin-right: 5%;
+            margin-top: 3%;
+        }
+    </style>
+</head>
+<body style="padding: 0;">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <div id="particles-js" class="bkgrd" style="border: 0; padding: 0;
+    z-index: -1;"></div>
+    <h1>Model Summary</h1>
+    <div class="output_subarea output_stream output_stdout output_text summary">
+        <pre>
+        This Convolutional Neural Network (CNN) model was trained on 
+        Google Colab GPU Runtime Environment on Classical MNIST Dataset
+        of Handwritten Digits (60,000 training images and 10,000 testing
+        images). The model had achieved 99.28% test accuracy with 
+        0.022275074268919615% test loss. For better results Data 
+        Augmentation was also applied.
+
+        The Model is written using Tensorflow 2.1.0 Keras api. Model 
+        configuration is given below:
+
+        _________________________________________________________________
+        Layer (type)                 Output Shape              Param #   
+        =================================================================
+        input_1 (InputLayer)         [(None, 28, 28, 1)]       0         
+        _________________________________________________________________
+        conv2d_1 (Conv2D)            (None, 28, 28, 32)        320       
+        _________________________________________________________________
+        batch_normalization_1 (Batch (None, 28, 28, 32)        128       
+        _________________________________________________________________
+        max_pooling2d (MaxPooling2D) (None, 14, 14, 32)        0         
+        _________________________________________________________________
+        conv2d_2 (Conv2D)            (None, 14, 14, 64)        18496     
+        _________________________________________________________________
+        batch_normalization_2 (Batch (None, 14, 14, 64)        256       
+        _________________________________________________________________
+        conv2d_3 (Conv2D)            (None, 14, 14, 64)        36928     
+        _________________________________________________________________
+        batch_normalization_3 (Batch (None, 14, 14, 64)        256       
+        _________________________________________________________________
+        max_pooling2d_1 (MaxPooling2 (None, 7, 7, 64)          0         
+        _________________________________________________________________
+        dropout (Dropout)            (None, 7, 7, 64)          0         
+        _________________________________________________________________
+        flatten (Flatten)            (None, 3136)              0         
+        _________________________________________________________________
+        dense (Dense)                (None, 256)               803072    
+        _________________________________________________________________
+        dropout_1 (Dropout)          (None, 256)               0         
+        _________________________________________________________________
+        dense_1 (Dense)              (None, 128)               32896     
+        _________________________________________________________________
+        dropout_2 (Dropout)          (None, 128)               0         
+        _________________________________________________________________
+        dense_2 (Dense)              (None, 10)                1290      
+        =================================================================
+        Total params: 893,642
+        Trainable params: 893,322
+        Non-trainable params: 320
+        _________________________________________________________________
+
+        The graphs of the training loss vs. validation loss and training 
+        accuracy vs. validation accuracy over the number of epochs are 
+        given below:
+        </pre>
+    </div>
+    <img id="loss" src="static/assets/loss.png" alt="Model loss">
+    <img src="static/assets/accuracy.png" alt="Model accuracy">
+    <form action="/"><button id="home-btn">Home</button></form>
+    <script src="static/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+    <script src="static/modelsummary.js"></script>
+</body>
+</html>
