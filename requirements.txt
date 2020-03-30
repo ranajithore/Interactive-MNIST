@@ -3,3 +3,4 @@ gunicorn==19.9.0
 numpy>=1.9.2
 tensorflow==2.1.0
 matplotlib>=1.4.3
+opencv>=3.1
